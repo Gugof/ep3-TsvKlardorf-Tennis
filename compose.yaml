@@ -1,0 +1,38 @@
+services:
+  app:
+    build: .
+    container_name: ep3-app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.11
+    container_name: ep3-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: ep3
+      MARIADB_USER: ep3
+      MARIADB_PASSWORD: ep3
+    volumes:
+      - ep3_db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: ep3-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: ep3
+      PMA_PASSWORD: ep3
+    depends_on:
+      - db
+
+volumes:
+  ep3_db_data:

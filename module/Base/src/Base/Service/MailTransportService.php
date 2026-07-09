@@ -35,12 +35,17 @@ class MailTransportService extends AbstractService
                 case 'smtp-tls':
                     $optionsArray = array(
                         'host' => $this->configManager->need('mail.host'),
-                        'connection_class' => $this->configManager->need('mail.auth'),
-                        'connection_config' => array(
+                    );
+                                    
+                    $auth = trim((string) $this->configManager->need('mail.auth'));
+                                    
+                    if ($auth !== '' && strtolower($auth) !== 'none') {
+                        $optionsArray['connection_class'] = $auth;
+                        $optionsArray['connection_config'] = array(
                             'username' => $this->configManager->need('mail.user'),
                             'password' => $this->configManager->need('mail.pw'),
-                        ),
-                    );
+                        );
+                    }
 
                     if ($mailType == 'smtp-tls') {
                         $optionsArray['port'] = 587;

@@ -34,5 +34,13 @@ services:
     depends_on:
       - db
 
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: ep3-mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
 volumes:
   ep3_db_data:

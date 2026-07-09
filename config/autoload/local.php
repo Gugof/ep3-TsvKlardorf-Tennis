@@ -26,8 +26,9 @@ return [
     ],
     'i18n' => [
         'choice' => [
-            'en-US' => 'English',
-            'de-DE' => 'Deutsch',
+            // deativated cause only one language is supported at the moment
+            //'en-US' => 'English',
+            //'de-DE' => 'Deutsch',
 
             // More possible languages:
             // 'fr-FR' => 'Français',

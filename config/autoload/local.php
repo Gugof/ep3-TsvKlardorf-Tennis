@@ -16,21 +16,19 @@ return [
         'port' => null,
     ],
     'mail' => [
-        'type' => 'sendmail', // or 'smtp' or 'smtp-tls' (or 'file', to not send, but save to file (data/mails/))
-        'address' => 'info@bookings.example.com',
-            // Make sure 'bookings.example.com' matches the hosting domain when using type 'sendmail'
-
-        'host' => '?', // for 'smtp' type only, otherwise remove or leave as is
-        'user' => '?', // for 'smtp' type only, otherwise remove or leave as is
-        'pw' => '?', // for 'smtp' type only, otherwise remove or leave as is
-
-        'port' => 'auto', // for 'smtp' type only, otherwise remove or leave as is
-        'auth' => 'plain', // for 'smtp' type only, change this to 'login' if you have problems with SMTP authentication
+        'type' => 'smtp',
+        'address' => 'buchung@tsv-klardorf.de',
+        'host' => 'mailpit',
+        'user' => '',
+        'pw' => '',
+        'port' => 1025,
+        'auth' => 'none',
     ],
     'i18n' => [
         'choice' => [
-            'en-US' => 'English',
-            'de-DE' => 'Deutsch',
+            // deativated cause only one language is supported at the moment
+            //'en-US' => 'English',
+            //'de-DE' => 'Deutsch',
 
             // More possible languages:
             // 'fr-FR' => 'Français',

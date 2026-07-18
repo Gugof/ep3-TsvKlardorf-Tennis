@@ -40,9 +40,12 @@ services:
     image: axllent/mailpit:latest
     container_name: ep3-mailpit
     restart: unless-stopped
+    environment:
+      MP_UI_AUTH_FILE: /run/secrets/.htpasswd
+    volumes:
+      - /opt/ep3/secrets/.htpasswd:/run/secrets/.htpasswd:ro
     ports:
       - "8025:8025"
-      - "1025:1025"
 
 volumes:
   ep3_db_data:

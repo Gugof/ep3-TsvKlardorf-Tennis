@@ -6,6 +6,8 @@ services:
       - "8080:80"
     volumes:
       - .:/var/www/html
+      - ./docker/apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+      - /opt/ep3/secrets/.htpasswd:/run/secrets/.htpasswd:ro
     depends_on:
       - db
 
@@ -26,7 +28,7 @@ services:
     container_name: ep3-phpmyadmin
     restart: unless-stopped
     ports:
-      - "8081:80"
+      - "127.0.0.1:8081:80"
     environment:
       PMA_HOST: db
       PMA_USER: ep3
@@ -39,8 +41,8 @@ services:
     container_name: ep3-mailpit
     restart: unless-stopped
     ports:
-      - "8025:8025"
-      - "1025:1025"
+      - "127.0.0.1:8025:8025"
+      - "127.0.0.1:1025:1025"
 
 volumes:
   ep3_db_data:

@@ -37,8 +37,10 @@ echo "[4/4] Docker-Container aktualisieren"
 docker compose up -d --build
 
 echo
+echo "[5/5] Container-Status prüfen"
+
+docker compose ps
+
+echo
 echo "=== Deployment erfolgreich abgeschlossen ==="
-
-
-echo "Projekt: $PROJECT_DIR"
 echo
